@@ -1,3 +1,7 @@
+original credit goes to https://github.com/JMathiszig-Lee
+
+using this to test Eleveld calcs against a reference
+
 # PyTCI
 
 A python package for Target Controlled Infusions. 
