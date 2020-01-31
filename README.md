@@ -1,5 +1,9 @@
 # PyTCI
 
+making some minor tweaks, original credit to https://github.com/JMathiszig-Lee/
+
+---
+
 A python package for Target Controlled Infusions. 
 
 Spawned from the NHS Hack Day project https://github.com/JMathiszig-Lee/Propofol, this splits out useful code into a package and updates it to python3
