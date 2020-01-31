@@ -4,8 +4,8 @@ A python package for Target Controlled Infusions.
 
 Spawned from the NHS Hack Day project https://github.com/JMathiszig-Lee/Propofol, this splits out useful code into a package and updates it to python3
 
-[![Build Status](https://travis-ci.org/JMathiszig-Lee/PyTCI.svg?branch=master)](https://travis-ci.org/JMathiszig-Lee/PyTCI)
-[![Coverage Status](https://coveralls.io/repos/github/JMathiszig-Lee/PyTCI/badge.svg?branch=master)](https://coveralls.io/github/JMathiszig-Lee/PyTCI?branch=master)
+[![Build Status][image-1]][1]
+[![Coverage Status][image-2]][2]
 
 # Installation
 if using pip
@@ -51,17 +51,17 @@ example:
 example:
 ```python
 >>> from PyTCI.models import propofol
->>> patient = propofol.Schnider(40, 70, 170, 'm')
+>>> patient = propofol.Eleveld(40, 70, 170, 'm')
 >>> patient.v2
 24
 ```
 
-the class methods ```give_drug``` and ```wait_time``` can he used to model propofol kinetics
+the class methods `give_drug` and `wait_time` can he used to model propofol kinetics
 
 example:
 ```python
 >>> from PyTCI.models import propofol
->>> patient = propofol.Marsh(90)
+>>> patient = propofol.Eleveld(40, 70, 170, 'm')
 >>> patient.give_drug(200)
 >>> patient.x1
 9.746588693957115
@@ -74,18 +74,18 @@ example:
 
 Infusions are currently only implemented for propofol
 
-The two methods available are ```effect_bolus``` and ```plasma_infusion```
+The two methods available are `effect_bolus` and `plasma_infusion`
 
 Effect bolus returns the bolus (in mg) needed over 10 seconds to achieve the desired effect site concentration. It's input is the desired target in ug/ml and returns the bolus needed in mg
 ```python
->>> patient = propofol.Schnider(40, 70, 190, 'm')
+>>> patient = propofol.Eleveld(40, 70, 190, 'm')
 >>> patient.effect_bolus(6)
 95.1
 ```
 the function uses a simple search to find a dose that gets within 2% of the desired concentration 
 
 
-Plasma_infusion takes desired plasma concentration(ug/ml) and desired time (seconds) and returns a python list of the required infusions rates every ten seconds in the format [(mg per second)],(resulting plasma concentration)]
+Plasma\_infusion takes desired plasma concentration(ug/ml) and desired time (seconds) and returns a python list of the required infusions rates every ten seconds in the format [(mg per second)],(resulting plasma concentration)]
 ```python
 >>> patient.plasma_infusion(3, 60)
 [(1.4015583251674446, 2.999999999999999), (0.20276642700021327, 2.9999999999999996), (0.1897043393887194, 2.9999999999999987), (0.1792243459524349, 3.000000000000001), (0.17081505252896076, 3.0000000000000013), (0.16406634920010446, 3.000000000000002)]
@@ -112,3 +112,8 @@ class MyNewModel(Propofol):
 
 ```
 
+[1]:	https://travis-ci.org/JMathiszig-Lee/PyTCI
+[2]:	https://coveralls.io/github/JMathiszig-Lee/PyTCI?branch=master
+
+[image-1]:	https://travis-ci.org/JMathiszig-Lee/PyTCI.svg?branch=master
+[image-2]:	https://coveralls.io/repos/github/JMathiszig-Lee/PyTCI/badge.svg?branch=master
