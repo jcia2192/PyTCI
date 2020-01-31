@@ -1,7 +1,7 @@
 # PyTCI
 
 making some minor tweaks, original credit to https://github.com/JMathiszig-Lee/
-
+jc
 ---
 
 A python package for Target Controlled Infusions. 
@@ -63,7 +63,7 @@ example:
 example:
 ```python
 >>> from PyTCI.models import propofol
->>> patient = propofol.Schnider(40, 70, 170, 'm')
+>>> patient = propofol.Eleveld(40, 70, 170, 'm')
 >>> patient.v2
 24
 ```
@@ -73,7 +73,7 @@ the class methods ```give_drug``` and ```wait_time``` can he used to model propo
 example:
 ```python
 >>> from PyTCI.models import propofol
->>> patient = propofol.Marsh(90)
+>>> patient = propofol.Eleveld(40, 70, 170, 'm')
 >>> patient.give_drug(200)
 >>> patient.x1
 9.746588693957115
@@ -90,7 +90,7 @@ The two methods available are ```effect_bolus``` and ```plasma_infusion```
 
 Effect bolus returns the bolus (in mg) needed over 10 seconds to achieve the desired effect site concentration. It's input is the desired target in ug/ml and returns the bolus needed in mg
 ```python
->>> patient = propofol.Schnider(40, 70, 190, 'm')
+>>> patient = propofol.Eleveld(40, 70, 170, 'm')
 >>> patient.effect_bolus(6)
 95.1
 ```
@@ -99,7 +99,7 @@ the function uses a simple search to find a dose that gets within 2% of the desi
 
 Plasma_infusion takes desired plasma concentration(ug/ml), desired total time (seconds) and the time period for each segment (seconds) and returns a python list of the required infusions rates from every segment witin the total time specified in mg/sec
 ```python
->>> pt = propofol.Marsh(70)
+>>> pt = propofol.Eleveld(40, 70, 170, 'm')
 >>> pt.plasma_infusion(2, 60)
 [3.27269899102373, 0.1453355022895698, 0.14478000490919285, 0.14422948797801816, 0.1436839059972244, 0.143143213884116]
 >>> pt.plasma_infusion(2, 60, 30)
@@ -107,23 +107,4 @@ Plasma_infusion takes desired plasma concentration(ug/ml), desired total time (s
 
 ```
 
-
-
-The built in models inherit from a parent class.
-You can define your own models and use the same functions to see how yours performs
-```python
-class MyNewModel(Propofol):
-     def __init__(self, desired, arguments):
-        #my custom code to generate volumes and constants
-        self.v1 = a_constant * weight
-        self.v2 = a_constant * lean_body_mass
-        etc... etc...
-
-        #if you want to work with clearances rate constants must be generated
-        self.from_clearances(self)
-
-        #finally set up model 
-        self.setup(self)
-
-```
 
