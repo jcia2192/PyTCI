@@ -1,8 +1,7 @@
 # PyTCI
 
 making some minor tweaks, original credit to https://github.com/JMathiszig-Lee/
-jc
----
+
 
 A python package for Target Controlled Infusions. 
 
